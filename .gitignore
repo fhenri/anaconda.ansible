@@ -1,0 +1,4 @@
+*.retry
+roles/andrewrothstein.anaconda
+roles/andrewrothstein.bash
+roles/andrewrothstein.unarchive-deps
