@@ -1,4 +1,8 @@
 - hosts: all
   become: yes
+
+  vars:
+    - anaconda_make_sys_default: True
+
   roles:
     - andrewrothstein.anaconda
