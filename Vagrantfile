@@ -8,11 +8,11 @@ Vagrant.configure("2") do |config|
   config.vm.network "private_network", ip: "192.168.33.12"
 
   config.vm.provision "ansible_local" do |ansible|
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = "provision/playbook.yml"
     ansible.install_mode = "pip"
     ansible.version = "2.2.1.0"
     ansible.verbose = "true"
-    ansible.galaxy_role_file = "requirements.yml"
+    ansible.galaxy_role_file = "provision/requirements.yml"
   end
 
 #  config.vm.provision "ansible" do |ansible|
