@@ -1,0 +1,51 @@
+- hosts: all
+  become: True
+
+  vars:
+    - anaconda_make_sys_default: True
+    - anaconda_pkg_update: False
+
+  roles:
+    - andrewrothstein.anaconda
+
+  post_tasks:
+
+    - name: Create jupyter notebook configuration directory
+      file: 
+        path=/home/vagrant/.jupyter 
+        state=directory 
+        owner=vagrant 
+        group=vagrant
+
+    - name: Install jupyter configuration file
+      copy: 
+        src=files/jupyter_notebook_config.py 
+        dest=/home/vagrant/.jupyter 
+        owner=vagrant 
+        group=vagrant
+
+    - name: Create jupyter notebook directory
+      file: 
+        path=/home/vagrant/notebooks 
+        state=directory 
+        owner=vagrant 
+        group=vagrant
+
+    - name: Install jupyter notebook systemd service
+      copy: 
+        src=files/jupyter-notebook.service 
+        dest=/etc/systemd/system
+      notify: Reload systemd daemon
+
+    - meta: flush_handlers
+
+    - name: Enable and start jupyter notebook service
+      service: 
+        name=jupyter-notebook 
+        enabled=yes 
+        state=started
+
+  handlers:
+
+    - name: Reload systemd daemon
+      command: /bin/systemctl daemon-reload

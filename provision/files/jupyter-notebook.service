@@ -1,0 +1,13 @@
+[Unit]
+Description=Jupyter Notebook
+
+[Service]
+Type=simple
+PIDFile=/var/run/jupyter-notebook.pid
+ExecStart=/usr/local/anaconda/bin/jupyter notebook
+User=vagrant
+Group=vagrant
+WorkingDirectory=/home/vagrant/notebooks
+
+[Install]
+WantedBy=multi-user.target
