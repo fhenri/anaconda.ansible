@@ -41,3 +41,13 @@
         name: jupyter-notebook 
         enabled: yes 
         state: started
+
+    - name: Install python library through pip requirements
+      pip:
+        requirements: /home/vagrant/notebooks/requirements.txt
+
+    - name: install python library via conda
+      conda: name={{ item }} state=latest executable="/usr/local/anaconda/bin/conda"
+      with_items:
+       - numpy
+       - tensorflow
