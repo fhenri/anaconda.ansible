@@ -10,8 +10,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "provision/playbook.yml"
-    ansible.install_mode = "pip"
-    ansible.version = "2.2.1.0"
+    ansible.install_mode = "default"
+    #ansible.version = "latest"
     ansible.verbose = "true"
     ansible.galaxy_role_file = "provision/requirements.yml"
     ansible.raw_arguments = ["--module-path", "/vagrant/provision/library/ansible-conda"]
