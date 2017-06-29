@@ -3,7 +3,6 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
-  #config.vbguest.auto_update = false
 
   config.vm.synced_folder "notebooks/", "/home/vagrant/notebooks"
   config.vm.network "private_network", ip: "192.168.33.12"
