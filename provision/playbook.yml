@@ -1,5 +1,5 @@
 - hosts: all
-  become: yes
+  become: true
 
   vars:
     - anaconda_make_sys_default: True
@@ -52,3 +52,4 @@
       with_items:
        - numpy
        - tensorflow
+       - snuggs
