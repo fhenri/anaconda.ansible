@@ -1,3 +1,4 @@
+.vagrant/
 provision/*.retry
 provision/roles/andrewrothstein.anaconda
 provision/roles/andrewrothstein.bash

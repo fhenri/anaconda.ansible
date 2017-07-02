@@ -1,5 +1,5 @@
 - hosts: all
-  become: True
+  become: true
 
   vars:
     - anaconda_make_sys_default: True
@@ -10,24 +10,24 @@
   post_tasks:
 
     - name: Create jupyter notebook configuration directory
-      file: 
-        path: /home/vagrant/.jupyter 
-        state: directory 
-        owner: vagrant 
+      file:
+        path: /home/vagrant/.jupyter
+        state: directory
+        owner: vagrant
         group: vagrant
 
     - name: Install jupyter configuration file
-      copy: 
-        src: files/jupyter_notebook_config.py 
-        dest: /home/vagrant/.jupyter 
-        owner: vagrant 
+      copy:
+        src: files/jupyter_notebook_config.py
+        dest: /home/vagrant/.jupyter
+        owner: vagrant
         group: vagrant
 
     - name: Create jupyter notebook directory
-      file: 
-        path: /home/vagrant/notebooks 
-        state: directory 
-        owner: vagrant 
+      file:
+        path: /home/vagrant/notebooks
+        state: directory
+        owner: vagrant
         group: vagrant
 
     - name: Install jupyter notebook systemd service
@@ -40,9 +40,9 @@
     - meta: flush_handlers
 
     - name: Enable and start jupyter notebook service
-      service: 
-        name: jupyter-notebook 
-        enabled: yes 
+      service:
+        name: jupyter-notebook
+        enabled: yes
         state: started
 
     - name: Install python library through pip requirements
