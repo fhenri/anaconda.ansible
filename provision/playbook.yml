@@ -31,7 +31,7 @@
         group: vagrant
 
     - name: Install jupyter notebook systemd service
-      copy: 
+      template: 
         src: files/jupyter-notebook.service 
         dest: /etc/systemd/system
         mode: 0755
