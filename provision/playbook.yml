@@ -3,7 +3,6 @@
 
   vars:
     - anaconda_make_sys_default: True
-    - anaconda_pkg_update: False
 
   roles:
     - andrewrothstein.anaconda
@@ -54,8 +53,7 @@
     - name: install python library via conda
       conda: name={{ item }} state=latest executable="/usr/local/anaconda/bin/conda"
       with_items:
-       - numpy
-       - tensorflow
+       - snuggs
 
   handlers:
 
